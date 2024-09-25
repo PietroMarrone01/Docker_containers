@@ -1,0 +1,30 @@
+version: '3'
+services:
+  web:
+    build: ./webserver
+    container_name: webserver
+    ports:
+      - "5001:5001"
+    environment:
+      - DB_HOST=DB
+      - DB_PORT=5432
+      - DB_NAME=webapp
+      - DB_USER=webapp_user
+      - DB_PASSWORD=securepassword
+    depends_on:    #database container is started before the web server container, because the web server depends on the database to function properly
+      - database
+
+  database:
+    build: ./database
+    container_name: DB
+    environment:
+      POSTGRES_DB: webapp
+      POSTGRES_USER: webapp_user
+      POSTGRES_PASSWORD: securepassword
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data:
