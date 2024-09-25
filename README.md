@@ -9,7 +9,7 @@ The exercise must met the following acceptance criteria (the more, the merrier):
     - A database with a simple schema containing a table with a row having at least a "name" column and a row with your name on it.
     - Dockerfile to build the database container
 3. Use one of the following container orchestration approaches:
-    - docker-compose
+    - docker-compose (the one that was used)
     - kubernetes yaml
     - helm
     - kustomize
